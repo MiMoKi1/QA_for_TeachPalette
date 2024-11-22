@@ -1,0 +1,94 @@
+Jira
+Purpose:
+Used for managing test cases, logging bugs, tracking progress, and assigning tasks.
+
+Chrome DevTools
+Purpose:
+A built-in developer tool in Chrome used for inspecting HTML/CSS, debugging JavaScript, testing performance, and monitoring network calls.
+Key tabs used:
+Elements: Viewed and edited HTML/CSS live.
+Console: Debugged JavaScript errors and logged outputs.
+Network: Monitored API calls, payloads, and response times.
+Performance: Recorded app performance metrics during user actions.
+Saved logs or screenshots directly for debugging.
+
+Postman
+Purpose:
+A tool for testing RESTful APIs by sending requests and verifying responses.
+
+Axe DevTools
+Purpose:
+A browser extension for accessibility testing against WCAG guidelines.
+
+Lighthouse
+Purpose:
+An automated tool for assessing performance, accessibility, SEO, and PWA capabilities.
+
+JMeter
+Purpose:
+A tool for load and stress testing APIs or web applications.
+Download JMeter and Java.
+Steps Used:
+Created a new test plan.
+Added a Thread Group for virtual users.
+Configured the number of threads (users) and loop count.
+Added HTTP Request Samplers to define API endpoints.
+Ran the test and analyzed performance metrics in the View Results Tree or Summary Report.
+
+NVDA (NonVisual Desktop Access)
+Purpose:
+A screen reader to test accessibility for visually impaired users.
+Steps Used:
+Used Tab to move between elements.
+Listened for issues like missing labels or confusing navigation.
+
+Snipping Tool (Windows) / Screenshot Tool, Jam Extension, and Screen to GIF
+Purpose:
+Used for capturing screenshots of issues for bug reports.
+
+Google Docs
+Purpose:
+Used for creating test plans, reports, and logs.
+Steps Used:
+Opened Word and created a document using templates (e.g., test plan template).
+Formatted sections for objectives, test scenarios, and results.
+Embedded screenshots or logs as needed.
+Saved and shared the document.
+
+Google Sheets
+Purpose:
+Used for tracking test cases, execution logs, and compatibility reports.
+Steps Used:
+Created a spreadsheet with columns for:
+Test Case ID
+Description
+Steps
+Expected Result
+Actual Result
+Status
+Filled in test cases during test creation or execution.
+Used filters to sort by failed or pending test cases.
+
+Tomato (Custom CLI created by me)
+Purpose:
+A CLI tool for generating automated test steps from Gherkin scenarios and testing APIs using Axios.
+Steps Used:
+Placed the gherkin.feature file in the src directory.
+Ran the command to generate test steps:
+tomato generate --input src/gherkin.feature --output automatedTestSteps.js  
+Used the generated test steps in Selenium or Axios for testing.
+
+BrowserStack
+Purpose:
+A cross-browser testing platform for ensuring compatibility across devices and browsers.
+Steps Used:
+Selected browser version and device type.
+Launched the app on the virtual browser and executed manual or automated tests.
+
+Visual Studio Code (VS Code)
+Purpose:
+A lightweight IDE for reviewing and editing code (JavaScript, HTML, CSS).
+Steps Used:
+Opened the project directory in VS Code.
+Used extensions like ESLint or Prettier to analyze and format code.
+Debugged JavaScript using breakpoints and the integrated terminal.
