@@ -1,0 +1,46 @@
+Document Name: Bug Report for Tech Palette Mentor
+Document Type: JIRA Entry
+
+### Title: [Brief Description of Issue]  
+Example: Incorrect Hex Value Extracted from Pixel  
+
+### Description:  
+Provide a detailed description of the issue. Include the functionality and the problem observed.  
+
+Example:  
+Clicking on a specific pixel (X=50, Y=60) does not return the correct hex value.  
+
+### Steps to Reproduce:  
+1. Log in via OAuth.  
+2. Upload a sample image (JPG, compressed to 1MB).  
+3. Click on pixel X=50, Y=60.  
+4. Observe the displayed hex value.  
+
+### Expected Result:  
+The hex value should match the color of the selected pixel (e.g., #FF5733).  
+
+### Actual Result:  
+The hex value is displayed as #FFFFFF (white).  
+
+### Environment:  
+- **Browser**: Chrome v.114  
+- **Operating System**: Windows 10  
+- **Build Version**: [1.1]  
+
+### Severity:  
+- High  
+
+### Attachments:  
+- Screenshot: [HexValueBug.png]  
+- Console Logs (if applicable).  
+
+### Additional Comments:  
+The issue occurs for multiple pixels in the uploaded image.  
+
+---
+
+### JIRA Fields  
+- **Priority**: High  
+- **Component**: Hex Value Extraction  
+- **Labels**: Bug, Color Extraction, QA  
+- **Status**: Open  
