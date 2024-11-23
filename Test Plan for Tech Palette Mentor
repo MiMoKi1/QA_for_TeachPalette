@@ -1,0 +1,70 @@
+# Test Plan: Tech Palette Mentor  
+
+## 1. Overview  
+### Objective  
+To verify and validate the functionality, performance, and usability of the "Tech Palette Mentor" application.  
+
+### Scope  
+This testing focuses on:  
+1. OAuth login functionality.  
+2. Image upload and format restrictions.  
+3. Hex value extraction from clicked pixels.  
+4. Blending color functionality with paint constraints.  
+5. Grid overlay functionality and slider adjustments.  
+
+### Assumptions  
+- Supported browsers: Chrome, Edge.  
+- APIs are functional and integrated.  
+- The development team has provided a stable build for testing.  
+
+---
+
+## 2. Test Environment  
+- **Platform**: Web Application  
+- **Test URL**: [Insert URL]  
+- **Browsers**: Chrome v.114+, Edge v.90+  
+- **Tools**:  
+  - JIRA for bug tracking.  
+  - Postman for API testing.  
+  - Chrome DevTools for frontend testing.  
+  - Snipping Tool/Lightshot for screenshots.  
+
+---
+
+## 3. Features to Test  
+| **Feature**              | **Description**                                                                                                                                                        |  
+|---------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|  
+| OAuth Login              | Verify login via Google OAuth integration.                                                                                                                             |  
+| Image Upload             | Ensure only JPG, PNG, or IMG files are accepted. Validate image compression to under 1MB.                                                                              |  
+| Hex Value Extraction     | Clicking on an uploaded image returns the correct hex color value for the selected pixel.                                                                              |  
+| Color Blending           | Verify the paint blending functionality works with constraints (1-10 paints).                                                                                         |  
+| Grid Overlay             | Check the grid slider adjusts grid size dynamically between 2-12.  
+
+---
+
+## 4. Risks  
+- Delayed API responses during OAuth testing.  
+- High-resolution images may fail compression or slow the app.  
+
+---
+
+## 5. Test Deliverables  
+- Updated test cases (Excel).  
+- Bug reports (JIRA).  
+- Test execution logs and screenshots.  
+
+---
+
+## 6. Test Schedule  
+| **Task**                | **Owner**      | **Date**       |  
+|-------------------------|----------------|----------------|  
+| Write Test Cases        | QA Engineer    | [4th Sept 2024]  |  
+| Execute Test Cases      | QA Engineer    |  [7th Sept 2024] |  
+| Log Bugs in JIRA        | QA Engineer    |  7th [Sept 2024]  |  
+
+---
+
+## 7. Test Closure  
+- All critical bugs fixed and retested.  
+- Approval from stakeholders.  
+
