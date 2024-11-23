@@ -1,0 +1,47 @@
+8:30 AM - Morning Standup and Review of Tickets
+
+Review JIRA Issues:
+The QA tester starts their day by reviewing open tickets and bug reports in Jira. They check any new issues related to the Tech Palette Mentor app and confirm which features need testing based on the latest builds from the dev team. This might include issues like:
+
+Grid visibility toggling
+Color selection functionality
+Palette dropdown and paint color selection
+Daily Meeting:
+The tester attends the daily standup with the development team to clarify which features are ready for testing and discuss any blockers. They align on the testing scope for the day.
+
+9:00 AM - Writing Test Scenarios Using Gherkin
+
+Create or Update Gherkin Scenarios:
+The tester writes Gherkin scenarios for newly implemented features or updates in the Tech Palette Mentor app. These scenarios reflect the functionality of the app and are aligned with the development team's latest changes.
+
+Example Scenarios (written in Gherkin):
+
+gherkin
+
+Feature: Tech Palette Mentor Grid Functionality
+
+Scenario: User clicks grid button to toggle visibility
+  Given the user is logged into the app
+  When the user clicks on the grid button
+  Then the grid should toggle visibility
+
+Scenario: User changes grid size using the slider
+  Given the user has clicked on the grid button
+  When the user moves the grid size slider to 10
+  Then the grid should display 10 rows and columns
+
+Documenting:
+The tester documents any relevant information about the tests, like test scenarios, expected outcomes, and specific test data.
+
+10:30 AM - Automated Test Development Using Gherkin and Selenium (Tomato doing this)
+
+Generating Automated Test Steps:
+With the Gherkin scenarios created, the tester now uses the Tomato CLI to automatically generate the test steps. This involves feeding the Gherkin scenarios into the system, which then outputs JavaScript test steps for Selenium to execute. For example:
+
+javascript
+// Test Step: Grid Visibility Toggle
+const gridButton = document.querySelector('.grid-button');
+gridButton.click();
+expect(document.querySelector('.grid')).toBeVisible();
+Writing Selenium Tests:
+The tester writes the necessary Selenium WebDriver tests based on the Gherkin scenarios. These tests ensure that the Tech Palette Mentor app works as expected. They use Node.js with Selenium WebDriver for automation.
