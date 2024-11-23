@@ -1,0 +1,16 @@
+File Name: documentation/test_execution_log.md
+
+# Test Execution Log - 2024-11-22
+
+## OAuth API
+- **Test:** Valid Token Generation
+  - **Result:** Passed
+
+## Grid Data API
+- **Test:** Fetch Grid Data
+  - **Result:** Passed
+
+## Palette Colors API
+- **Test:** Retrieve Palette Colors
+  - **Result:** Failed
+  - **Issue:** Missing hex code for color ID 3
