@@ -1,0 +1,35 @@
+File Name: documentation/api_test_results.json
+{
+  "tests": [
+    {
+      "api": "OAuth API",
+      "test": "Valid Token Generation",
+      "result": "Passed",
+      "response": {
+        "status": 200,
+        "token": "eyJhbGciOi..."
+      }
+    },
+    {
+      "api": "Grid Data API",
+      "test": "Fetch Grid Data",
+      "result": "Passed",
+      "response": {
+        "status": 200,
+        "grid": {
+          "rows": 5,
+          "columns": 5
+        }
+      }
+    },
+    {
+      "api": "Palette Colors API",
+      "test": "Retrieve Palette Colors",
+      "result": "Failed",
+      "response": {
+        "status": 200,
+        "error": "Missing hex code for color ID 3"
+      }
+    }
+  ]
+}
