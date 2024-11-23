@@ -1,0 +1,45 @@
+File Name: selenium_tests/oauth_test.js
+const { Builder, By, until } = require('selenium-webdriver');
+
+(async function testOAuth() {
+    let driver = await new Builder().forBrowser('chrome').build();
+    try {
+        await driver.get('http://localhost:3000/login');
+        
+        // Input login credentials
+        await driver.findElement(By.id('username')).sendKeys('testuser');
+        await driver.findElement(By.id('password')).sendKeys('password123');
+        await driver.findElement(By.id('loginButton')).click();
+
+        // Wait for token response
+        let token = await driver.wait(until.elementLocated(By.id('token')), 5000).getText();
+        console.log('Token:', token);
+    } finally {
+        await driver.quit();
+    }
+})();
+
+--------------------------------------------------
+
+File Name: selenium_tests/grid_test.js
+const { Builder, By } = require('selenium-webdriver');
+
+(async function testGridSlider() {
+    let driver = await new Builder().forBrowser('chrome').build();
+    try {
+        await driver.get('http://localhost:3000/image-grid');
+
+        // Adjust grid slider
+        let slider = await driver.findElement(By.id('gridSlider'));
+        await slider.sendKeys('5'); // Adjust grid size to 5
+
+        // Verify grid size update
+        let gridSize = await driver.findElement(By.id('gridSize')).getText();
+        console.log('Grid Size:', gridSize);
+    } finally {
+        await driver.quit();
+    }
+})();
+
+---------------------------------------------------------
+
