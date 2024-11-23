@@ -1,0 +1,21 @@
+File Name: documentation/static_testing_findings.md
+
+# Static Testing Findings
+
+## Java Code Review
+- **Issue 1:** Missing null check in `AuthController.java`.
+  - **File:** `AuthController.java`
+  - **Line:** 45
+  - **Suggested Fix:** Add a null check for user credentials.
+
+## HTML Review
+- **Issue 1:** Missing `alt` attribute for image tags.
+  - **File:** `index.html`
+  - **Line:** 12
+  - **Suggested Fix:** Add `alt="image description"` to `<img>` tags.
+
+## CSS Review
+- **Issue 1:** No hover style for grid buttons.
+  - **File:** `styles.css`
+  - **Line:** 87
+  - **Suggested Fix:** Add `:hover` pseudo-class with background color.
