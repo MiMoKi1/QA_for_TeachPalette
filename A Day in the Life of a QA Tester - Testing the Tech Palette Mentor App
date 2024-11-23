@@ -45,3 +45,173 @@ gridButton.click();
 expect(document.querySelector('.grid')).toBeVisible();
 Writing Selenium Tests:
 The tester writes the necessary Selenium WebDriver tests based on the Gherkin scenarios. These tests ensure that the Tech Palette Mentor app works as expected. They use Node.js with Selenium WebDriver for automation.
+
+
+Part 3: Afternoon Tasks
+1. Performance Testing
+Goal: Evaluate the responsiveness and load time of the app during key operations (e.g., image upload, grid adjustment).
+Tools: Chrome DevTools (Performance tab), Lighthouse, JMeter
+
+Steps:
+Image Upload Performance:
+
+Open Chrome DevTools → Navigate to the Performance tab.
+Upload a valid image and start recording.
+Observe the timeline for:
+Load time for compressed image display.
+API response time for /api/upload.
+Save the performance report.
+Grid Adjustment Performance:
+
+Test slider responsiveness:
+Set the slider to values 2, 6, and 12 while recording performance.
+Verify the smooth rendering of the grid on the canvas.
+Stress Testing with JMeter:
+
+Simulate 100 concurrent users uploading images and retrieving color blends using JMeter:
+Configure threads (users) = 100.
+Loop Count = 5.
+Analyze response time and server performance under load.
+Output Document: Performance Test Report
+File Name: performance_test_report.docx
+Content Example:
+Performance Test Results - Tech Palette Mentor
+
+1. Image Upload Performance:
+   - Average API Response Time: 450ms
+   - Observed Delays: None
+   - Status: PASS
+
+2. Grid Adjustment Performance:
+   - Average Render Time for 12x12 Grid: 220ms
+   - Observed Lag: Minor at 12x12 grid with large images
+   - Status: PASS with Optimization Needed
+
+3. Stress Test (100 Users, 5 Iterations):
+   - Average Response Time for /api/upload: 850ms
+   - Success Rate: 98%
+   - Failures: 2 due to timeout at peak load
+2. Cross-Browser Testing
+Goal: Ensure consistent behavior and UI rendering across different browsers and devices.
+Tools: BrowserStack (or local setup with Chrome, Firefox, Edge), Responsive Design Mode in Chrome DevTools
+
+Steps:
+Setup Environment:
+
+Test the app on:
+Browsers: Chrome (latest), Firefox (latest), Edge (latest).
+Devices: Desktop, iPad, iPhone X.
+Run Test Cases:
+
+Use the UI Test Execution Log created earlier.
+Verify the following:
+Grid rendering consistency on different screen resolutions.
+Color picker functionality across devices.
+Dropdown behavior on touch devices.
+Log Browser-Specific Issues:
+
+For example:
+If the slider misbehaves on Firefox.
+If the grid fails to resize on mobile.
+Output Document: Cross-Browser Compatibility Report
+File Name: cross_browser_report.xlsx
+Content Example:
+sql
+| Test Case ID | Browser    | Device        | Result | Issues Observed                       |
+|--------------|------------|---------------|--------|---------------------------------------|
+| TC_UI_001    | Chrome     | Desktop       | Pass   | None                                  |
+| TC_UI_002    | Firefox    | iPhone X      | Fail   | Grid color picker misaligned          |
+| TC_UI_003    | Edge       | iPad          | Pass   | None                                  |
+3. Accessibility Testing
+Goal: Ensure the app meets WCAG 2.1 accessibility guidelines.
+Tools: Axe DevTools, Chrome Lighthouse, Screen Reader (NVDA).
+
+Steps:
+Run Axe DevTools:
+
+Use Chrome's Axe DevTools extension to scan the app for accessibility issues.
+Focus areas:
+Color contrast for the grid and palette.
+Aria labels on buttons and sliders.
+Verify Screen Reader Compatibility:
+
+Use NVDA to navigate the app.
+Ensure the grid slider, dropdowns, and buttons are read correctly.
+Output Document: Accessibility Test Report
+File Name: accessibility_test_report.docx
+Content Example:
+Accessibility Test Report - Tech Palette Mentor
+
+1. Axe DevTools Results:
+   - Total Issues Found: 4
+     - Missing aria-label on Slider (Critical)
+     - Low contrast ratio for grid lines on dark backgrounds (Minor)
+
+2. NVDA Results:
+   - Slider and buttons were read correctly.
+   - Dropdown navigation was inconsistent.
+4. Bug Verification and Regression Testing
+Goal: Retest bugs fixed by the development team to confirm resolution.
+Tools: Jira, Snipping Tool
+
+Steps:
+Retrieve fixed bug tickets from Jira.
+Retest each reported issue.
+Update Jira tickets with comments on the results:
+If fixed: Mark the ticket as "Closed."
+If not fixed: Reopen the ticket with detailed observations.
+Output Document: Bug Verification Log
+File Name: bug_verification_log.docx
+Content Example:
+yaml
+Bug Verification Log
+
+1. Bug ID: TM-1234
+   Issue: Dropdown closes unexpectedly.
+   Status: FIXED
+   Comments: Dropdown remains open after selection.
+
+2. Bug ID: TM-1235
+   Issue: Slider misaligned on Firefox.
+   Status: NOT FIXED
+   Comments: Slider position still shifts on click.
+5. Documentation and Reporting
+Goal: Compile all findings into a final test summary report.
+Tools: Microsoft Word, Excel
+
+Steps:
+Create a comprehensive Test Summary Report:
+
+Summarize all executed test cases, results, and observed issues.
+Include screenshots, logs, and key metrics from performance and accessibility tests.
+Organize QA artifacts into a GitHub repository:
+
+Files:
+test_summary_report.docx
+ui_test_execution_log.xlsx
+api_test_report.docx
+static_code_analysis_report.xlsx
+Folder structure:
+mathematica
+Tech-Palette-Mentor-QA/
+├── Test Reports/
+├── Gherkin Scenarios/
+├── Performance Reports/
+└── Cross-Browser Reports/
+Output Document: Test Summary Report
+File Name: test_summary_report.docx
+Content Example:
+Tech Palette Mentor - Test Summary Report
+
+1. Test Execution Summary:
+   - Total Test Cases: 50
+   - Passed: 45
+   - Failed: 5
+
+2. Key Observations:
+   - Grid functionality works as expected except on Firefox.
+   - API performance is optimal, but minor optimizations needed under load.
+
+3. Next Steps:
+   - Developer team to address remaining bugs.
+   - Retest accessibility after fixes.
