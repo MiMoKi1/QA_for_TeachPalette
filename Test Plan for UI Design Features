@@ -1,0 +1,91 @@
+Overview
+This test plan focuses on validating the UI/UX functionality and design behavior of:
+
+Grid Button and Slider: Interactions for adjusting grid size and grid background color.
+Canvas Size: Proper rendering and resizing of the uploaded image within the canvas.
+Color Wheel: Interactions for changing grid background color using a color wheel.
+Palette Dropdown: Interaction for selecting/deselecting paint options, with corresponding UI updates.
+
+Scope
+Validate visual and functional behavior in different browsers (Chrome, Edge).
+Ensure UI responsiveness across varying screen sizes.
+Test boundary and edge cases for the grid slider and palette interactions.
+Test Environment
+Platform: Web Application.
+Browsers: Chrome v.114+, Edge v.90+.
+
+Tools:
+Chrome DevTools for inspecting UI elements and behavior.
+Lightshot or Snipping Tool for screenshots.
+Excel for test case tracking.
+Features to Test
+Feature	Description
+Grid Button & Slider	Button toggles grid visibility, and slider adjusts grid size dynamically between 2-12 rows/columns.
+Canvas Rendering	Uploaded image fits within canvas without distortion.
+Grid Background Color	Clicking the grid color button opens a color wheel. The grid color changes dynamically when the color wheel closes.
+Palette Dropdown	Dropdown opens on button click, and paint options display proper interactions (bold format, swatch movement, border size change).
+Paint Selection/Deselection	Paints can be individually selected/deselected, and UI resets properly when "select all" or "deselect all" is clicked.
+
+Deliverables
+Completed test cases (Excel).
+Bug reports (JIRA).
+Screenshots for failed test cases.
+
+Test Cases (Excel)
+Test Case ID	Feature	Test Data	Expected Result	Status	Comments
+TC01	Grid Button	Click grid button	Toggles grid visibility on/off.		
+TC02	Grid Slider	Move slider to 5	Adjusts grid size to 5 rows/columns dynamically.		
+TC03	Grid Color Change	Select red in color wheel	Grid background changes to red when the color wheel closes.		
+TC04	Canvas Rendering	Upload a 1920x1080 JPG	Image fits within the canvas without distortion.		
+TC05	Palette Dropdown	Click palette button	Dropdown displays paint options with correct color swatches, names, and codes.		
+TC06	Paint Selection	Select a single paint	Color name, hex code, and pigment code change to bold format; swatch moves slightly; border size increases.		
+TC07	Paint Deselect	Deselect a single paint	Paint swatch, name, and border reset to original styles.		
+TC08	Select All Paints	Click "Select All" button	All paints are selected; styles update for all paints as described (bold, swatch movement, border increase).		
+TC09	Deselect All Paints	Click "Deselect All" button	All paints reset to original styles.		
+
+Bug Report Title: Grid background color does not update dynamically.
+Description:
+When the color wheel is closed after selecting a new color, the grid background does not update to reflect the chosen color.
+
+Steps to Reproduce:
+Click the grid button to enable the grid.
+Click the grid color button to open the color wheel.
+Select a new color (e.g., red) and click outside the color wheel to close it.
+Expected Result:
+Grid background changes to the selected color when the color wheel closes.
+
+Actual Result:
+Grid background remains the default color.
+
+Environment:
+Browser: Chrome v.114
+OS: Windows 10
+Severity: High
+Attachments:
+Screenshot: [GridColorBug.png]
+Console logs (if applicable).
+Execution Steps
+1. Test Grid Button and Slider
+Open the app and click the Grid Button.
+Verify that the grid appears and disappears.
+Adjust the Grid Slider to various values (e.g., 2, 5, 12).
+Ensure grid adjusts dynamically to the corresponding size.
+2. Test Canvas Rendering
+Upload an image of various sizes (e.g., 1920x1080, 800x600).
+Verify the image fits within the canvas without distortion or clipping.
+3. Test Grid Background Color
+Click the Grid Color Button to open the color wheel.
+Select a color (e.g., #FF5733) and click outside the wheel.
+Verify that the grid background changes to the selected color.
+4. Test Palette Dropdown and Paint Selection
+Click the Palette Button to open the dropdown.
+Verify that paint options display correctly (name, hex, pigment code, swatch).
+Select a paint.
+Ensure the name, hex, and pigment code turn bold.
+Verify swatch movement and increased border size.
+Deselect the paint and confirm the style resets.
+5. Test Select/Deselect All Functionality
+Click Select All.
+Ensure all paints are selected with the described UI updates.
+Click Deselect All.
+Verify that all styles reset to their original states.
