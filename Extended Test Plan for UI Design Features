@@ -1,0 +1,1001 @@
+Overview
+This extended test plan now includes edge case testing and performance scenarios in addition to the initial functional UI testing.
+
+Features to Test
+In addition to the previously described functionality, the following tests will cover edge cases and performance scenarios:
+
+Feature	Description
+Grid Button & Slider	Edge case tests for grid visibility, incorrect slider values (out of range), and boundary testing for slider movement.
+Canvas Rendering	Performance tests for uploading large images, edge cases for unsupported file types, and handling of oversized images.
+Grid Background Color	Test for boundary colors, invalid inputs (like clicking outside the color wheel), and performance under different color load scenarios.
+Palette Dropdown	Edge case testing for palette behavior with minimal/maximal selections, rapid selection/deselection of multiple paints.
+Paint Selection/Deselection	Performance when multiple paint options are selected/deselected quickly.
+
+
+Edge Case Testing
+Test Case ID	Feature	Test Data	Expected Result
+TC10	Grid Button	Click grid button multiple times rapidly	Grid toggles visibility with no UI crash or delay.
+TC11	Grid Slider	Move slider to 0 or 12	The grid does not appear when slider is at 0; grid shows 12 columns/rows when slider is at 12.
+TC12	Canvas Rendering	Upload a 10MB high-resolution image	The image uploads successfully, but the app compresses or scales it appropriately to fit within the canvas.
+TC13	Grid Color Change	Click outside of the color wheel	No grid color change should occur if the user clicks outside the color wheel (invalid interaction).
+TC14	Palette Dropdown	Click rapidly between multiple colors	Dropdown remains stable, and no selection or deselection anomalies occur.
+TC15	Paint Selection/Deselection	Select and deselect all paints in rapid succession	All selections/deselections should work seamlessly without UI delay or glitch.
+
+
+Performance Testing
+Test Case ID	Feature	Test Data	Expected Result
+TC16	Canvas Rendering	Upload 5-10 high-res images (over 10MB each)	The app handles multiple large image uploads without crashing, with images compressed and resized as needed.
+TC17	Grid Button & Slider	Rapidly toggle grid and move the slider back and forth	The grid and slider should adjust smoothly without lag or crash.
+TC18	Palette Dropdown	Open and close the dropdown 50 times quickly	The dropdown opens and closes without delay or lag, and all selected colors are correctly registered.
+TC19	Paint Selection/Deselection	Select/deselect 50+ colors in quick succession	The UI should not experience any lag, and all selections/deselections should be reflected immediately.
+
+
+Share
+
+
+You said:
+So what does a manual tester actually. Not theory like the exact steps…look at requirement then make test plans then use tools…what tools jira for manual testing
+ChatGPT said:
+ChatGPT
+A manual tester's actual daily tasks are more practical and hands-on than theory. Here's a step-by-step breakdown of what they do in the real world, along with the tools they use:
+
+1. Understanding Requirements
+What happens: The tester reviews documents like user stories, acceptance criteria, or technical specs to understand what needs testing.
+Tools used:
+JIRA (to track requirements, log bugs, and manage test cases).
+Confluence (for requirement documentation and collaboration).
+2. Creating Test Cases
+What happens: The tester writes detailed test cases for each requirement. This includes step-by-step instructions, expected results, and edge cases.
+Tools used:
+Excel/Google Sheets (simple projects).
+Test Management Tools like TestRail, Zephyr (JIRA plugin), or Xray.
+3. Setting Up the Test Environment
+What happens: Ensuring everything is ready to test—installing the app, setting up test data, and configuring systems.
+Tools used:
+Virtual Machines or cloud-based environments (e.g., AWS, Azure, or Docker).
+Browser tools like Chrome DevTools for debugging.
+4. Executing Tests
+What happens: Following the test cases and manually interacting with the system (clicking buttons, entering data, etc.) to see if it behaves as expected. This includes:
+Functional testing.
+Exploratory testing (freestyle testing without formal test cases).
+Tools used:
+The product itself.
+Browser tools (for web apps).
+Screen recording tools (like Loom or OBS Studio) to document issues.
+5. Logging Bugs
+What happens: Any issues found during testing are documented clearly, with steps to reproduce, screenshots, and severity levels.
+Tools used:
+JIRA, Bugzilla, or Trello for logging bugs.
+Screenshot tools like Snagit or Greenshot.
+Recording tools like ShareX.
+6. Regression Testing
+What happens: Retesting fixed bugs and checking if new updates have broken anything else.
+Tools used:
+Same test management and bug tracking tools.
+7. Collaboration with Developers
+What happens: Frequent discussions with developers to clarify issues, retest fixes, or explain bugs.
+Tools used:
+Slack, Teams, or email.
+Screen-sharing tools like Zoom.
+8. Reporting Progress
+What happens: Sharing testing updates with stakeholders via daily stand-ups or reports.
+Tools used:
+JIRA dashboards or custom reports.
+Excel/Google Sheets (for small teams).
+9. Learning and Adapting
+What happens: Manual testers constantly adapt their skills, whether learning about new features, debugging tools, or testing methodologies.
+Tools used:
+Documentation tools (Confluence).
+Online resources for self-learning.
+Tools and Skills Beyond JIRA
+JIRA isn’t the only tool. While it’s a staple for bug tracking and task management, manual testers also use tools for:
+
+Test management: TestRail, Zephyr, Xray.
+Exploratory testing: Session-based tools like Rapid Reporter.
+API testing (yes, some manual testers do this): Postman, curl.
+Documentation: Google Docs, Confluence.
+Team collaboration: Slack, Teams.
+Would you like a focus on a particular area, like how to write test cases or how JIRA integrates with testing?
+
+
+
+
+
+
+You said:
+But like manual testing can be automated so why isn’t it
+ChatGPT said:
+ChatGPT
+That's a great question! While automation is powerful, there are several reasons why manual testing still exists and is essential:
+
+1. Not Everything Can Be Automated
+Human Intuition and Creativity:
+Manual testers can explore beyond the scripted paths, finding bugs automation might miss. For example:
+Checking aesthetic or UI/UX issues (e.g., "This color doesn’t feel right").
+Testing for usability problems or odd behaviors (e.g., "This flow is confusing").
+Ad-hoc and Exploratory Testing: Automation follows scripts, but manual testers can test creatively, uncovering unexpected issues.
+2. Automation Takes Time and Effort to Build
+Writing automated tests requires coding skills and effort, especially for complex systems.
+For new or rapidly changing features, building and maintaining automation might not be worth the cost compared to quick manual testing.
+Automating tests for one-time or low-risk tasks isn’t efficient.
+3. Automation Can Fail at the Wrong Time
+Automated tests rely on stability in the application. If the UI or APIs change frequently, automation tests can break, leading to:
+False positives (tests fail but the app works fine).
+False negatives (tests pass but a bug exists).
+Manual testers can adapt quickly and validate if the failure is genuine or a script issue.
+
+4. Cost and Resource Constraints
+Automation tools and skilled engineers cost money. Small teams or projects with limited budgets may rely on manual testing instead.
+Manual testers can onboard quickly compared to automating everything.
+5. Some Types of Testing Are Hard to Automate
+Exploratory Testing: Unscripted, human-driven exploration to find edge cases.
+Usability Testing: Gauging how real users interact with the system.
+Visual and Aesthetic Testing: Verifying that UI elements look correct across devices and browsers.
+Ad-hoc Testing: Quick, informal testing without scripts.
+6. Manual Testing Complements Automation
+Even with automation, manual testing is needed for:
+Validating automated test results.
+Testing edge cases or real-world scenarios not covered in scripts.
+Running tests during early development stages (when automation isn’t ready).
+7. Automation Has Its Own Bugs
+Automation scripts themselves can have errors. If the automation fails, manual testers validate whether the issue is in the application or the script.
+When Should You Automate?
+For repetitive, stable, and predictable tasks like regression testing.
+When ROI is high: saving time and resources over the long term.
+When Is Manual Testing Better?
+For short-term or exploratory tasks.
+When testing complex scenarios that are hard to script.
+When validating user experience.
+In practice, manual and automated testing often work together to ensure a well-rounded testing process. Automating everything isn’t always practical or cost-effective. Would you like advice on balancing both in a testing role?
+
+
+
+
+
+
+You said:
+Ok so can you  do a day in the life of a manual tester, stick to few tools like jira, excel, doc, chrom dev, screen shot tool, what documents do they review, show me this whole process with all the documents they use , make, give me the content of each step
+ChatGPT said:
+ChatGPT
+Sure! Here's a detailed day in the life of a manual tester, focusing on the tools you mentioned—JIRA, Excel, Google Docs, Chrome DevTools, and screenshot tools. I'll walk through a realistic workflow and include the types of documents they use and create.
+
+8:30 AM – Review Requirements
+Goal: Understand what needs to be tested.
+
+Activities:
+
+Open JIRA to check assigned tasks (e.g., a ticket for a new feature or bug fix).
+Read the attached requirement document (usually a user story or technical spec).
+Documents reviewed:
+
+Requirement Document: Contains feature details or bug descriptions. Example Content:
+less
+Copy code
+User Story: As a user, I want to reset my password so I can access my account if I forget it.  
+Acceptance Criteria:  
+1. "Forgot Password" link navigates to the reset page.  
+2. Reset form sends an email to the registered email address.  
+3. User receives confirmation upon success.  
+Tools used: JIRA, Google Docs (if linked).
+
+9:00 AM – Write Test Cases
+Goal: Plan how to test the feature/bug fix.
+
+Activities:
+
+Write test cases in Excel based on the requirements.
+Include normal, edge, and negative test scenarios.
+Document created:
+
+Test Case Document (Excel). Example Content:
+Test Case ID	Test Step	Expected Result	Status	Comments
+TC01	Open login page and click "Forgot Password"	Navigate to password reset page	Pending	
+TC02	Enter valid email and submit	Email sent confirmation message	Pending	
+TC03	Enter invalid email and submit	Display "Invalid email" error message	Pending	
+Tools used: Excel, JIRA.
+
+10:00 AM – Prepare Test Environment
+Goal: Set up everything needed for testing.
+
+Activities:
+
+Open the web app in a browser.
+Use Chrome DevTools to check network requests or log errors.
+Tools used: Browser (e.g., Chrome), Chrome DevTools.
+
+10:30 AM – Execute Tests
+Goal: Test the feature manually using the test cases.
+
+Activities:
+
+Perform each test step in the web app.
+Log results in the test case document (Excel).
+Take screenshots of any bugs or failed tests.
+Document updated:
+
+Test Execution Log (Excel, updated from the test case sheet). Example Content (updated version of test case):
+| Test Case ID
+
+
+
+
+
+You said:
+Ok so can you  do a day in the life of a manual tester, stick to few tools like jira, excel, doc, chrom dev, screen shot tool, what documents do they review, show me this whole process with all the documents they use , make, give me the content of each step
+ChatGPT said:
+ChatGPT
+Here’s a detailed day in the life of a manual tester, focusing on the tools you specified (JIRA, Excel, Google Docs, Chrome DevTools, and a screenshot tool). I'll walk through a realistic workflow, showing the documents they use, create, and their content.
+
+8:30 AM – Morning Standup and Reviewing Assigned Work
+Goal: Understand what features/bugs need testing today.
+Activities:
+Attend the daily standup to get updates on progress.
+Open JIRA and check assigned tasks, user stories, and linked requirement documents.
+Documents Reviewed:
+User Story in JIRA
+Example:
+
+vbnet
+Copy code
+Title: Reset Password Functionality  
+Description:  
+- Users should be able to reset their password if they forget it.  
+Acceptance Criteria:  
+1. "Forgot Password" link redirects to the reset page.  
+2. Reset form sends an email to the registered email address.  
+3. Confirmation is displayed after success.  
+Test Plan (Google Docs)
+Example Content:
+
+yaml
+Copy code
+Test Plan: Reset Password Feature  
+Scope: Test the reset password flow for the web app.  
+Testing Type: Functional Testing.  
+Test Environment: Chrome (latest version).  
+Tools Used:
+
+JIRA (to check stories/bugs).
+Google Docs (for the test plan).
+9:00 AM – Writing Test Cases
+Goal: Document all possible test scenarios for the feature.
+Activities:
+Open Excel to write test cases based on the user story.
+Create test scenarios for positive, negative, and edge cases.
+Document Created: Test Case Document (Excel)
+Test Case ID	Test Step	Expected Result	Pass/Fail	Comments
+TC01	Click "Forgot Password" on the login page.	Navigate to the password reset page.		
+TC02	Enter a valid email and click "Submit".	Display success message and send reset email.		
+TC03	Enter an invalid email (e.g., not registered).	Show "Email not found" error message.		
+Tools Used:
+
+Excel (to document test cases).
+10:00 AM – Setting Up Test Environment
+Goal: Ensure the system is ready for testing.
+Activities:
+Launch the web app on Chrome.
+Use Chrome DevTools to inspect elements, check the console for errors, and observe network requests during interactions.
+Actions Taken in Chrome DevTools:
+
+Verify API calls on the Network tab when clicking "Submit" on the reset page.
+Check the Console tab for JavaScript errors.
+Tools Used:
+
+Browser (Chrome)
+Chrome DevTools
+10:30 AM – Executing Tests
+Goal: Perform the test cases and log results.
+Activities:
+Follow the steps outlined in the test case document.
+Log results in Excel and capture screenshots for any issues.
+Document Updated: Test Execution Log (Excel)
+Test Case ID	Test Step	Expected Result	Pass/Fail	Comments
+TC01	Click "Forgot Password".	Navigate to the password reset page.	Pass	
+TC02	Enter valid email, click submit.	Success message; email received.	Pass	
+TC03	Enter invalid email, submit.	"Email not found" error.	Fail	Error displayed in console; screenshot attached.
+Screenshots
+Capture with a screenshot tool (e.g., Snagit, Greenshot).
+Save with a clear naming convention (e.g., TC03_invalid_email_error.png).
+Tools Used:
+
+Excel (to log results).
+Screenshot Tool (to document failures).
+12:30 PM – Lunch Break
+1:30 PM – Bug Reporting
+Goal: Log all issues found during testing.
+Activities:
+Open JIRA and create detailed bug reports.
+Attach screenshots and steps to reproduce.
+Bug Report in JIRA
+Example Content:
+
+vbnet
+Copy code
+Title: Reset Password Page - Invalid Email Causes Console Error.  
+Description:  
+Steps to Reproduce:  
+1. Navigate to the login page and click "Forgot Password".  
+2. Enter an invalid email (e.g., invalid@test.com).  
+3. Observe the error message and console.  
+
+Expected Result: Display "Email not found" error only.  
+Actual Result: "Unhandled exception" error in the console.  
+
+Attachments: [TC03_invalid_email_error.png]  
+Priority: Medium  
+Tools Used:
+
+JIRA (to log bugs).
+Screenshot Tool (for visual proof).
+3:00 PM – Regression Testing
+Goal: Test fixed bugs or verify previous features are unaffected.
+Activities:
+Retest fixed bugs.
+Execute test cases for related areas.
+Document Updated: Regression Test Results (Excel)
+Example Content:
+
+Test Case ID	Test Step	Expected Result	Pass/Fail	Comments
+TC01	Click "Forgot Password".	Navigate to the password reset page.	Pass	
+TC03	Enter invalid email, submit.	"Email not found" error.	Pass	Bug fixed. No console errors.
+Tools Used:
+
+Excel
+4:30 PM – Reporting Progress
+Goal: Share testing status with the team.
+Activities:
+Update JIRA tickets with results (mark passes/fails).
+Write a summary of testing progress in Google Docs.
+Testing Summary (Google Docs)
+Example Content:
+
+yaml
+Copy code
+Date: 22/11/2024  
+Feature Tested: Reset Password Functionality  
+
+Test Results:  
+- Total Test Cases: 3  
+- Passed: 2  
+- Failed: 1 (Fixed and retested successfully).  
+
+Bug Reports:  
+1. TC03: Console error for invalid email (Resolved).  
+
+Next Steps:  
+- Continue testing related flows tomorrow.  
+Tools Used:
+
+Google Docs
+Summary of Tools and Documents:
+Documents Reviewed:
+
+Requirement/User Stories (JIRA).
+Test Plan (Google Docs).
+Documents Created/Updated:
+
+Test Case Document (Excel).
+Test Execution Log (Excel).
+Bug Reports (JIRA).
+Testing Summary (Google Docs).
+Tools Used:
+
+JIRA (task tracking, bug logging).
+Excel (test cases and results).
+Google Docs (documentation).
+Chrome DevTools (debugging).
+Screenshot Tool (documenting issues).
+Does this match what you were looking for?
+
+
+
+
+
+
+You said:
+Yes and would this be a typical day, like what else would the do and how would they test restful api
+ChatGPT said:
+ChatGPT
+Yes, this is a typical day for a manual tester working on a web application, but there are additional tasks they might do depending on the project and tools involved. If they're also responsible for API testing, here's how their day might expand.
+
+Additional Responsibilities on a Typical Day
+Regression Testing
+
+Retesting previously tested functionality after new features or bug fixes are implemented.
+Verifying that bug fixes haven't introduced new issues (smoke testing).
+Exploratory Testing
+
+Testing the application in an unscripted, creative way to find unexpected issues.
+Collaborating with Developers
+
+Attending discussions to clarify requirements.
+Reviewing log files with developers for backend or API issues.
+Test Environment Setup
+
+Preparing test data for different scenarios (e.g., creating user accounts with specific roles).
+API Testing
+
+Testing RESTful APIs (often needed if the app uses APIs for data exchange).
+How to Test RESTful APIs Manually
+Tools Used:
+Chrome DevTools: For inspecting API calls made by the application.
+Postman (or sometimes just curl or browser extensions): To send manual API requests.
+Excel: To log test cases and results.
+Google Docs: To document issues or test plans.
+Steps for Manual API Testing
+Step 1: Understand API Requirements
+Goal: Review API documentation to understand the endpoints and expected behavior.
+
+Document Reviewed:
+Example: API Documentation (provided by the developer or a tool like Swagger).
+
+makefile
+Copy code
+Endpoint: POST /api/v1/login  
+Description: Authenticates a user and returns a token.  
+Request:  
+- Headers: Content-Type: application/json  
+- Body: {"username": "user", "password": "pass"}  
+Response:  
+- 200: {"token": "xyz123"}  
+- 401: {"error": "Invalid credentials"}  
+Step 2: Write Test Scenarios for APIs
+Goal: Create test cases covering positive, negative, and edge cases.
+
+Document Created: Test Cases (Excel)
+Example Content:
+
+Test Case ID	API Endpoint	Method	Test Data	Expected Response	Status	Comments
+API_TC01	POST /api/v1/login	POST	{"username": "user", "password": "pass"}	200 OK, token in response body.		
+API_TC02	POST /api/v1/login	POST	{"username": "wrong", "password": "pass"}	401 Unauthorized, "Invalid credentials."		
+API_TC03	POST /api/v1/login	POST	{"username": "", "password": ""}	400 Bad Request, validation error.		
+Step 3: Execute Tests in Postman
+Goal: Verify API functionality by sending requests and analyzing responses.
+
+Steps in Postman:
+Create a new collection for the API tests (e.g., "Login API Tests").
+Add requests for each test case.
+Example Request:
+Method: POST
+URL: https://example.com/api/v1/login
+Headers: Content-Type: application/json
+Body: {"username": "user", "password": "pass"}
+Send the request and check the response.
+Postman Output:
+Example Response:
+
+vbnet
+Copy code
+Status: 200 OK  
+Body: {"token": "xyz123"}  
+Step 4: Log Results in Excel
+Update the test case document with actual results:
+
+Test Case ID	API Endpoint	Method	Test Data	Expected Response	Status	Comments
+API_TC01	POST /api/v1/login	POST	{"username": "user", "password": "pass"}	200 OK, token in response body.	Pass	
+API_TC02	POST /api/v1/login	POST	{"username": "wrong", "password": "pass"}	401 Unauthorized, "Invalid credentials."	Pass	
+API_TC03	POST /api/v1/login	POST	{"username": "", "password": ""}	400 Bad Request, validation error.	Fail	No error returned.
+Step 5: Debug Issues Using Chrome DevTools
+Goal: Observe API calls made by the app and validate that they match expectations.
+
+Steps in Chrome DevTools:
+
+Open the application and navigate to the login page.
+Open DevTools (Ctrl + Shift + I) and switch to the Network tab.
+Perform login actions in the UI.
+Check the API request/response details in the Network tab.
+Example Observations:
+
+vbnet
+Copy code
+Request: POST /api/v1/login  
+Payload: {"username": "user", "password": "pass"}  
+Response: 500 Internal Server Error  
+Actions Taken:
+
+Capture a screenshot of the error.
+Report the issue in JIRA.
+Step 6: Report Bugs
+Goal: Log issues for failing test cases or unexpected behavior.
+
+Bug Report in JIRA:
+
+vbnet
+Copy code
+Title: Login API - Empty Fields Not Returning Validation Error.  
+Description:  
+Steps to Reproduce:  
+1. Send POST request to /api/v1/login with empty body {"username": "", "password": ""}.  
+2. Observe that the response returns 200 OK instead of 400 Bad Request.  
+
+Expected Result: Validation error for empty fields.  
+Actual Result: 200 OK with no error message.  
+
+Attachments: [Postman_Screenshot_TC03.png]  
+Priority: High  
+Additional Notes for a Day With API Testing
+Time Management: Testing APIs can take up most of the day depending on the number of endpoints and complexity.
+Collaboration: Frequent discussions with developers to understand how the API works.
+Repetitive Tasks: If endpoints are stable, test automation tools like Postman Collections can execute tests faster.
+Would you like me to expand on automating API testing with Postman or dive deeper into how to write good API test cases?
+
+
+
+
+
+
+You said:
+Ok this is great, do you remember tech palette mentor? We coded it and did testing. Can you do this exact this up for testing for that?
+ChatGPT said:
+ChatGPT
+I don't recall a project called "Tech Palette Mentor," but if you'd like me to help you create a detailed manual testing process for it, based on the workflow we just discussed, I can absolutely do that! Could you provide a quick summary of what Tech Palette Mentor is about? For example:
+
+Is it a web app, API, or mobile app?
+What are its core functionalities or user stories?
+Any specific features you'd like to focus on for testing?
+This information will help tailor the testing process and documents for your project.
+
+
+
+
+
+
+You said:
+User uploads an image, inputs secured to compress images and restrict to jpg, png or img, user needs to log in Via oauth to be verified to get access to the app. User clicks on image to get hex value and they can select paint they have from the pallet list and the app will fetch a bend of colours user can use to blend and recreate the hex value. User can select number o f paint to be used in the blend, it’s been set to number value and restricted from 1 to 10. User can click grid and then use a slider to increase the grid drawn over the image it’s set to 2 to 12 boxes. 
+ChatGPT said:
+ChatGPT
+Memory updated
+Here’s a detailed manual testing process tailored for "Tech Palette Mentor" with all steps, tools, and documents included:
+
+Day in the Life of Testing "Tech Palette Mentor"
+Tools Used
+JIRA: For tracking requirements, bugs, and tasks.
+Excel: For writing and logging test cases.
+Google Docs: For documenting test plans and issues.
+Postman: For testing OAuth login API.
+Chrome DevTools: For inspecting frontend behavior, image uploads, and API calls.
+Lightshot or Snipping Tool: For capturing screenshots of issues.
+Step-by-Step Workflow
+Step 1: Review Requirements
+Documents Reviewed:
+
+Feature Requirements Document (summarized above).
+OAuth API Documentation.
+Goal: Understand key flows and constraints, such as:
+
+Supported image formats (JPG, PNG, IMG).
+OAuth integration requirements.
+Restrictions for blending paints and grid sliders.
+Step 2: Write Test Plan
+Document Created: Test Plan (Google Docs)
+
+Example Content:
+
+markdown
+Copy code
+## Test Plan: Tech Palette Mentor  
+### Objectives  
+1. Verify users can log in via OAuth.  
+2. Validate image upload functionality with file type and compression restrictions.  
+3. Test hex value extraction and blending feature with correct constraints.  
+4. Test grid overlay slider with boundary values.
+
+### Scope  
+- Functional testing of core features.  
+- UI/UX testing for accessibility and responsiveness.  
+
+### Assumptions  
+- Supported browsers: Chrome, Edge.  
+- APIs are fully functional and integrated.  
+
+### Test Environment  
+- Test URL: [development URL]  
+- Browsers: Chrome v.114+, Edge v.90+  
+Step 3: Write Test Scenarios
+Document Created: Test Cases (Excel)
+
+Example Content:
+
+Test Case ID	Feature	Test Data	Expected Result	Status	Comments
+TC01	OAuth Login	Valid OAuth credentials	User is redirected to the app dashboard with a success message.		
+TC02	Image Upload	File: sample.jpg (compressed to 1MB)	Image uploads successfully; app restricts non-JPG, PNG, or IMG files.		
+TC03	Hex Value Extraction	Click on image at X=50, Y=60	Displays correct hex value (e.g., #FF5733) based on the selected pixel.		
+TC04	Blending Feature	Hex: #FF5733, Paints: 3	Displays 3 paint colors for blending; fails gracefully if number of paints is outside 1-10.		
+TC05	Grid Slider	Slider set to 5	Displays grid overlay with 5 rows and columns. Fails gracefully if slider is set outside the range of 2-12.		
+Step 4: Execute Tests
+Feature 1: OAuth Login
+Steps:
+
+Open the app and click Login.
+Redirect to OAuth provider (Google).
+Input valid credentials and log in.
+Check the response in DevTools (Network Tab).
+Expected Output:
+
+User is redirected to the dashboard.
+Response: Status 200, user token received.
+Feature 2: Image Upload
+Steps:
+
+Click Upload Image and select a JPG file.
+Upload unsupported files (e.g., PDF) to test restrictions.
+Expected Output:
+
+Supported images upload successfully and compress to under 1MB.
+Unsupported formats display an error message: “Only JPG, PNG, and IMG formats are allowed.”
+Feature 3: Hex Value Extraction
+Steps:
+
+Upload an image.
+Click on a pixel and observe the hex value displayed.
+Expected Output:
+
+Clicking on pixel X=50, Y=60 extracts hex value (e.g., #FF5733).
+Feature 4: Blending Feature
+Steps:
+
+Select a hex value.
+Input a number of paints (e.g., 3).
+Observe the suggested blend.
+Expected Output:
+
+Blending works for inputs 1-10.
+Inputs outside this range display an error: “Select between 1-10 paints only.”
+Feature 5: Grid Slider
+Steps:
+
+Use the slider to set grid size to 5.
+Observe the grid overlay.
+Expected Output:
+
+Grid adjusts dynamically for values 2-12.
+Inputs outside this range fail gracefully.
+Step 5: Report Bugs
+JIRA Bug Example:
+
+yaml
+Copy code
+Title: Hex Value Extraction Incorrect for Certain Pixels.  
+Description: Clicking on pixel X=50, Y=60 returns incorrect hex value #FFFFFF instead of #FF5733.  
+Steps to Reproduce:  
+1. Upload sample image.  
+2. Click on pixel X=50, Y=60.  
+
+Expected Result: Displays #FF5733.  
+Actual Result: Displays #FFFFFF.  
+
+Attachments: [Screenshot_HexError.png]  
+Priority: High  
+Step 6: Test API Manually (e.g., OAuth)
+Steps in Postman:
+
+Create a POST request to the OAuth API.
+URL: https://example.com/oauth/login.
+Headers: Content-Type: application/json.
+Body: {"username": "user", "password": "pass"}.
+Send the request and observe the response.
+Expected Output:
+
+200 OK, token in response.
+Outcome
+At the end of the day, you'll have:
+
+Updated test cases in Excel.
+Bug reports filed in JIRA.
+Screenshots and logs for failed test cases.
+Clear documentation of issues for the development team.
+Would you like me to include the test plan or bug report templates?
+
+
+
+
+
+
+You said:
+Yes please 
+ChatGPT said:
+ChatGPT
+Test Plan Template
+Document Name: Test Plan for Tech Palette Mentor
+Document Type: Google Docs
+
+yaml
+Copy code
+# Test Plan: Tech Palette Mentor  
+
+## 1. Overview  
+### Objective  
+To verify and validate the functionality, performance, and usability of the "Tech Palette Mentor" application.  
+
+### Scope  
+This testing focuses on:  
+1. OAuth login functionality.  
+2. Image upload and format restrictions.  
+3. Hex value extraction from clicked pixels.  
+4. Blending color functionality with paint constraints.  
+5. Grid overlay functionality and slider adjustments.  
+
+### Assumptions  
+- Supported browsers: Chrome, Edge.  
+- APIs are functional and integrated.  
+- The development team has provided a stable build for testing.  
+
+---
+
+## 2. Test Environment  
+- **Platform**: Web Application  
+- **Test URL**: [Insert URL]  
+- **Browsers**: Chrome v.114+, Edge v.90+  
+- **Tools**:  
+  - JIRA for bug tracking.  
+  - Postman for API testing.  
+  - Chrome DevTools for frontend testing.  
+  - Snipping Tool/Lightshot for screenshots.  
+
+---
+
+## 3. Features to Test  
+| **Feature**              | **Description**                                                                                                                                                        |  
+|---------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|  
+| OAuth Login              | Verify login via Google OAuth integration.                                                                                                                             |  
+| Image Upload             | Ensure only JPG, PNG, or IMG files are accepted. Validate image compression to under 1MB.                                                                              |  
+| Hex Value Extraction     | Clicking on an uploaded image returns the correct hex color value for the selected pixel.                                                                              |  
+| Color Blending           | Verify the paint blending functionality works with constraints (1-10 paints).                                                                                         |  
+| Grid Overlay             | Check the grid slider adjusts grid size dynamically between 2-12.  
+
+---
+
+## 4. Risks  
+- Delayed API responses during OAuth testing.  
+- High-resolution images may fail compression or slow the app.  
+
+---
+
+## 5. Test Deliverables  
+- Updated test cases (Excel).  
+- Bug reports (JIRA).  
+- Test execution logs and screenshots.  
+
+---
+
+## 6. Test Schedule  
+| **Task**                | **Owner**      | **Date**       |  
+|-------------------------|----------------|----------------|  
+| Write Test Cases        | QA Engineer    | [Insert Date]  |  
+| Execute Test Cases      | QA Engineer    | [Insert Date]  |  
+| Log Bugs in JIRA        | QA Engineer    | [Insert Date]  |  
+
+---
+
+## 7. Test Closure  
+- All critical bugs fixed and retested.  
+- Approval from stakeholders.  
+
+Bug Report Template
+Document Name: Bug Report for Tech Palette Mentor
+Document Type: JIRA Entry
+
+markdown
+Copy code
+### Title: [Brief Description of Issue]  
+Example: Incorrect Hex Value Extracted from Pixel  
+
+### Description:  
+Provide a detailed description of the issue. Include the functionality and the problem observed.  
+
+Example:  
+Clicking on a specific pixel (X=50, Y=60) does not return the correct hex value.  
+
+### Steps to Reproduce:  
+1. Log in via OAuth.  
+2. Upload a sample image (JPG, compressed to 1MB).  
+3. Click on pixel X=50, Y=60.  
+4. Observe the displayed hex value.  
+
+### Expected Result:  
+The hex value should match the color of the selected pixel (e.g., #FF5733).  
+
+### Actual Result:  
+The hex value is displayed as #FFFFFF (white).  
+
+### Environment:  
+- **Browser**: Chrome v.114  
+- **Operating System**: Windows 10  
+- **Build Version**: [Insert Build Number]  
+
+### Severity:  
+- High  
+
+### Attachments:  
+- Screenshot: [HexValueBug.png]  
+- Console Logs (if applicable).  
+
+### Additional Comments:  
+The issue occurs for multiple pixels in the uploaded image.  
+
+---
+
+### Example JIRA Fields  
+- **Priority**: High  
+- **Component**: Hex Value Extraction  
+- **Labels**: Bug, Color Extraction, QA  
+- **Status**: Open  
+Let me know if you'd like further refinement or more templates!
+
+
+
+
+
+
+You said:
+ Can I have all this for the ui  design of the grid button, slider in grid size, canvas size for the uploaded image, the colour option of what the grid bc colour will be it should be clicked one to open the colour wheel and when I click out of it then the colour wheel closes and the grid changes colour. The colour pallet only appears as a dropdown list when palette button clicked and then user gets to select a colour the colour name hex code and pigment code go to bold format and the colour swatch beside the colour moves slightly and the box border becomes larger. When user then deselects the paint it goes back to normal this should happen when individually selected or the button select all is clicked and the deselects should happen when the paint is inidividly selected or deselected. 
+ChatGPT said:
+ChatGPT
+Here’s a manual testing plan and workflow tailored to test the UI design and functionality of the features you described for the grid button, grid slider, canvas, and palette interaction. This includes test cases, a test plan, and bug report templates.
+
+Test Plan for UI Design Features
+Overview
+This test plan focuses on validating the UI/UX functionality and design behavior of:
+
+Grid Button and Slider: Interactions for adjusting grid size and grid background color.
+Canvas Size: Proper rendering and resizing of the uploaded image within the canvas.
+Color Wheel: Interactions for changing grid background color using a color wheel.
+Palette Dropdown: Interaction for selecting/deselecting paint options, with corresponding UI updates.
+Scope
+Validate visual and functional behavior in different browsers (Chrome, Edge).
+Ensure UI responsiveness across varying screen sizes.
+Test boundary and edge cases for the grid slider and palette interactions.
+Test Environment
+Platform: Web Application.
+Browsers: Chrome v.114+, Edge v.90+.
+Tools:
+Chrome DevTools for inspecting UI elements and behavior.
+Lightshot or Snipping Tool for screenshots.
+Excel for test case tracking.
+Features to Test
+Feature	Description
+Grid Button & Slider	Button toggles grid visibility, and slider adjusts grid size dynamically between 2-12 rows/columns.
+Canvas Rendering	Uploaded image fits within canvas without distortion.
+Grid Background Color	Clicking the grid color button opens a color wheel. The grid color changes dynamically when the color wheel closes.
+Palette Dropdown	Dropdown opens on button click, and paint options display proper interactions (bold format, swatch movement, border size change).
+Paint Selection/Deselection	Paints can be individually selected/deselected, and UI resets properly when "select all" or "deselect all" is clicked.
+Deliverables
+Completed test cases (Excel).
+Bug reports (JIRA).
+Screenshots for failed test cases.
+Test Cases (Excel)
+Test Case ID	Feature	Test Data	Expected Result	Status	Comments
+TC01	Grid Button	Click grid button	Toggles grid visibility on/off.		
+TC02	Grid Slider	Move slider to 5	Adjusts grid size to 5 rows/columns dynamically.		
+TC03	Grid Color Change	Select red in color wheel	Grid background changes to red when the color wheel closes.		
+TC04	Canvas Rendering	Upload a 1920x1080 JPG	Image fits within the canvas without distortion.		
+TC05	Palette Dropdown	Click palette button	Dropdown displays paint options with correct color swatches, names, and codes.		
+TC06	Paint Selection	Select a single paint	Color name, hex code, and pigment code change to bold format; swatch moves slightly; border size increases.		
+TC07	Paint Deselect	Deselect a single paint	Paint swatch, name, and border reset to original styles.		
+TC08	Select All Paints	Click "Select All" button	All paints are selected; styles update for all paints as described (bold, swatch movement, border increase).		
+TC09	Deselect All Paints	Click "Deselect All" button	All paints reset to original styles.		
+Bug Report Template
+Title: Grid background color does not update dynamically.
+Description:
+When the color wheel is closed after selecting a new color, the grid background does not update to reflect the chosen color.
+
+Steps to Reproduce:
+Click the grid button to enable the grid.
+Click the grid color button to open the color wheel.
+Select a new color (e.g., red) and click outside the color wheel to close it.
+Expected Result:
+Grid background changes to the selected color when the color wheel closes.
+
+Actual Result:
+Grid background remains the default color.
+
+Environment:
+Browser: Chrome v.114
+OS: Windows 10
+Severity: High
+Attachments:
+Screenshot: [GridColorBug.png]
+Console logs (if applicable).
+Execution Steps
+1. Test Grid Button and Slider
+Open the app and click the Grid Button.
+Verify that the grid appears and disappears.
+Adjust the Grid Slider to various values (e.g., 2, 5, 12).
+Ensure grid adjusts dynamically to the corresponding size.
+2. Test Canvas Rendering
+Upload an image of various sizes (e.g., 1920x1080, 800x600).
+Verify the image fits within the canvas without distortion or clipping.
+3. Test Grid Background Color
+Click the Grid Color Button to open the color wheel.
+Select a color (e.g., #FF5733) and click outside the wheel.
+Verify that the grid background changes to the selected color.
+4. Test Palette Dropdown and Paint Selection
+Click the Palette Button to open the dropdown.
+Verify that paint options display correctly (name, hex, pigment code, swatch).
+Select a paint.
+Ensure the name, hex, and pigment code turn bold.
+Verify swatch movement and increased border size.
+Deselect the paint and confirm the style resets.
+5. Test Select/Deselect All Functionality
+Click Select All.
+Ensure all paints are selected with the described UI updates.
+Click Deselect All.
+Verify that all styles reset to their original states.
+Outcome
+After executing these tests:
+
+You’ll have a comprehensive record of test results in Excel.
+Bugs will be documented in JIRA with appropriate details.
+Screenshots will accompany issues for development clarity.
+Would you like to add specific edge cases or performance testing steps for this UI?
+
+
+
+
+
+
+You said:
+Yes please 
+ChatGPT said:
+ChatGPT
+Here’s an extended version of the manual testing plan that includes edge cases and performance testing for the Tech Palette Mentor app, focusing on the UI design features for the grid button, slider, canvas size, color options, and palette interactions.
+
+Extended Test Plan for UI Design Features
+Overview
+This extended test plan now includes edge case testing and performance scenarios in addition to the initial functional UI testing.
+
+Features to Test
+In addition to the previously described functionality, the following tests will cover edge cases and performance scenarios:
+
+Feature	Description
+Grid Button & Slider	Edge case tests for grid visibility, incorrect slider values (out of range), and boundary testing for slider movement.
+Canvas Rendering	Performance tests for uploading large images, edge cases for unsupported file types, and handling of oversized images.
+Grid Background Color	Test for boundary colors, invalid inputs (like clicking outside the color wheel), and performance under different color load scenarios.
+Palette Dropdown	Edge case testing for palette behavior with minimal/maximal selections, rapid selection/deselection of multiple paints.
+Paint Selection/Deselection	Performance when multiple paint options are selected/deselected quickly.
+
+Edge Case Testing
+Test Case ID	Feature	Test Data	Expected Result
+TC10	Grid Button	Click grid button multiple times rapidly	Grid toggles visibility with no UI crash or delay.
+TC11	Grid Slider	Move slider to 0 or 12	The grid does not appear when slider is at 0; grid shows 12 columns/rows when slider is at 12.
+TC12	Canvas Rendering	Upload a 10MB high-resolution image	The image uploads successfully, but the app compresses or scales it appropriately to fit within the canvas.
+TC13	Grid Color Change	Click outside of the color wheel	No grid color change should occur if the user clicks outside the color wheel (invalid interaction).
+TC14	Palette Dropdown	Click rapidly between multiple colors	Dropdown remains stable, and no selection or deselection anomalies occur.
+TC15	Paint Selection/Deselection	Select and deselect all paints in rapid succession	All selections/deselections should work seamlessly without UI delay or glitch.
+
+Performance Testing
+Test Case ID	Feature	Test Data	Expected Result
+TC16	Canvas Rendering	Upload 5-10 high-res images (over 10MB each)	The app handles multiple large image uploads without crashing, with images compressed and resized as needed.
+TC17	Grid Button & Slider	Rapidly toggle grid and move the slider back and forth	The grid and slider should adjust smoothly without lag or crash.
+TC18	Palette Dropdown	Open and close the dropdown 50 times quickly	The dropdown opens and closes without delay or lag, and all selected colors are correctly registered.
+TC19	Paint Selection/Deselection	Select/deselect 50+ colors in quick succession	The UI should not experience any lag, and all selections/deselections should be reflected immediately.
+
+
+Bug Report for Edge Cases & Performance
+
+Title: Grid color does not update when clicking outside the color wheel.
+Description:
+The grid background color fails to update when the user clicks outside of the color wheel after selecting a color.
+
+Steps to Reproduce:
+Click the grid button to enable the grid.
+Click the grid color button to open the color wheel.
+Select a color from the wheel (e.g., #FF5733).
+Click outside the color wheel to close it.
+Expected Result:
+The grid background color should update to the selected color.
+
+Actual Result:
+The grid background does not change after closing the color wheel.
+
+Environment:
+Browser: Chrome v.114
+OS: Windows 10
+Severity: High
+Attachments:
+Screenshot: [ColorWheelBug.png]
+Console Logs (if applicable).
+Test Closure & Summary
+Completion Criteria: All edge cases and performance tests pass successfully.
+Exit Criteria: No critical bugs remain unresolved, and performance benchmarks are met.
+Approval: Stakeholders sign off on the UI and functionality for deployment.
