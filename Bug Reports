@@ -1,0 +1,12 @@
+File Name: documentation/bug_reports/missing_hex_codes.md
+
+# Bug Report: Missing Hex Codes in Palette Colors API
+
+- **API:** Palette Colors API
+- **Issue:** The response does not include hex codes for some color IDs.
+- **Steps to Reproduce:**
+  1. Log in to the app.
+  2. Call the Palette Colors API.
+  3. Observe the response data for missing hex codes.
+- **Expected Behavior:** Every color should include a name, hex code, and pigment code.
+- **Actual Behavior:** Hex codes are missing for some colors.
