@@ -1,0 +1,41 @@
+File Name: gherkin/user_auth.feature
+Feature: User Authentication API
+
+  Scenario: Valid OAuth token generation
+    Given the user provides valid login credentials
+    When the OAuth API is called
+    Then a valid token is returned
+    And the token expiration time is included
+
+  Scenario: Invalid login credentials
+    Given the user provides invalid login credentials
+    When the OAuth API is called
+    Then an error response is returned
+    And the error message is "Invalid username or password"
+-----------------------------------------------------------------------
+
+File Name: gherkin/grid_database.feature
+Feature: Grid Data API
+
+  Scenario: Fetch grid data for an image
+    Given the user is logged in
+    When the Grid API is called with a valid image ID
+    Then the API returns grid data
+    And the data includes grid dimensions and box count
+
+  Scenario: Invalid image ID
+    Given the user is logged in
+    When the Grid API is called with an invalid image ID
+    Then the API returns an error response
+    And the error message is "Image not found"
+
+----------------------------------------------------------------------------
+
+File Name: gherkin/palette_colors.feature
+Feature: Fetching JSON Color List
+
+  Scenario: Retrieve palette colors
+    Given the user is logged into the app
+    When the Palette API is called
+    Then the response includes all available colors
+    And each color includes a name, hex code, and pigment code
