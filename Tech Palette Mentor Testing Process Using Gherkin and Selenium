@@ -1,0 +1,125 @@
+Example of Gherkin scenarios for Tech Palette Mentor:
+
+gherkin
+Copy code
+Feature: Tech Palette Mentor Grid Functionality
+
+Scenario: User clicks grid button to toggle visibility
+  Given the user is logged into the app
+  When the user clicks on the grid button
+  Then the grid should toggle visibility
+
+Scenario: User changes grid size using the slider
+  Given the user has clicked on the grid button
+  When the user moves the grid size slider to 10
+  Then the grid should display 10 rows and columns
+
+Scenario: User selects a color for the grid background
+  Given the user clicks on the grid color button
+  When the user selects the color "#FF5733" from the color wheel
+  Then the grid background should change to "#FF5733"
+
+Scenario: User selects a color from the palette dropdown
+  Given the user clicks on the palette dropdown
+  When the user selects the color "Ocean Blue"
+  Then the selected color name, hex code, and pigment code should be displayed in bold
+Converting Gherkin Scenarios to Automated Test Steps
+Use Tomato's CLI to generate automated test steps for these scenarios based on the Gherkin features.
+
+
+// Test Step: Grid Visibility Toggle
+const gridButton = document.querySelector('.grid-button');
+gridButton.click();
+expect(document.querySelector('.grid')).toBeVisible();
+For changing grid size:
+
+javascript
+Copy code
+// Test Step: Change Grid Size
+const slider = document.querySelector('.grid-size-slider');
+slider.value = 10; // Set the slider to 10
+slider.dispatchEvent(new Event('input'));
+expect(document.querySelectorAll('.grid-cell').length).toBe(10); // Ensure grid has 10 rows and columns
+For selecting grid background color:
+
+javascript
+Copy code
+// Test Step: Select Grid Background Color
+const colorButton = document.querySelector('.grid-color-button');
+colorButton.click();
+const colorWheel = document.querySelector('.color-wheel');
+colorWheel.selectColor('#FF5733');
+expect(document.querySelector('.grid').style.backgroundColor).toBe('rgb(255, 87, 51)');
+For selecting colors from the palette:
+
+javascript
+Copy code
+// Test Step: Select Paint Color from Palette
+const paletteButton = document.querySelector('.palette-button');
+paletteButton.click();
+const colorName = 'Ocean Blue'; // This is the color name selected
+const colorBox = document.querySelector(`.palette .color-box[data-name="${colorName}"]`);
+colorBox.click();
+expect(document.querySelector('.color-name').textContent).toBe('Ocean Blue');
+
+Then I use Tomato to run these test steps in Selenium.
+
+This is what the test steps look like, from Tomato:
+
+const { Builder, By, until } = require('selenium-webdriver');
+const assert = require('assert');
+
+let driver;
+
+before(async function() {
+  driver = await new Builder().forBrowser('chrome').build();
+  await driver.get('http://localhost:3000'); // Example URL of the Tech Palette Mentor app
+});
+
+it('should toggle the grid visibility', async function() {
+  const gridButton = await driver.findElement(By.css('.grid-button'));
+  await gridButton.click();
+  const grid = await driver.findElement(By.css('.grid'));
+  const gridVisible = await grid.isDisplayed();
+  assert.strictEqual(gridVisible, true);
+});
+
+it('should change grid size', async function() {
+  const slider = await driver.findElement(By.css('.grid-size-slider'));
+  await slider.sendKeys('10'); // Set the slider to 10
+  const gridCells = await driver.findElements(By.css('.grid-cell'));
+  assert.strictEqual(gridCells.length, 100); // Expect 10x10 grid
+});
+
+it('should change grid background color', async function() {
+  const colorButton = await driver.findElement(By.css('.grid-color-button'));
+  await colorButton.click();
+  const colorWheel = await driver.findElement(By.css('.color-wheel'));
+  await colorWheel.sendKeys('#FF5733'); // Select a color
+  const grid = await driver.findElement(By.css('.grid'));
+  const backgroundColor = await grid.getCssValue('background-color');
+  assert.strictEqual(backgroundColor, 'rgb(255, 87, 51)');
+});
+
+it('should select a color from the palette', async function() {
+  const paletteButton = await driver.findElement(By.css('.palette-button'));
+  await paletteButton.click();
+  const colorBox = await driver.findElement(By.css('.palette .color-box[data-name="Ocean Blue"]'));
+  await colorBox.click();
+  const colorName = await driver.findElement(By.css('.color-name')).getText();
+  assert.strictEqual(colorName, 'Ocean Blue');
+});
+
+after(async function() {
+  await driver.quit();
+});
+
+Running the Tests
+
+After the Gherkin feature file is updated in Tomato, the automated test steps can be generated and executed through Selenium.
+For UI testing, this would be run against a local or staging environment to verify all UI components work as expected.
+Reporting
+
+After executing the tests, Test Reports can be generated that provide feedback on the success or failure of each scenario. Selenium WebDriver can integrate with tools like Mocha or Jest to output detailed reports for each test case.
+
+
